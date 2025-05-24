@@ -24,16 +24,16 @@ def read_requirements():
 setup(
     name="whisper-transcriber",
     version="1.0.0",
-    author="Whisper Transcriber Team",
-    author_email="contact@example.com",
+    author="ViktorFu",
+    author_email="fuwk509@gmail.com",
     description="Professional high-precision audio and video transcription tool with Whisper and Demucs",
     long_description=read_readme(),
     long_description_content_type="text/markdown",
-    url="https://github.com/your-username/whisper-transcriber",
+    url="https://github.com/ViktorFu/whisper-transcriber",
     project_urls={
-        "Bug Tracker": "https://github.com/your-username/whisper-transcriber/issues",
-        "Documentation": "https://github.com/your-username/whisper-transcriber/blob/main/README.md",
-        "Source Code": "https://github.com/your-username/whisper-transcriber",
+        "Bug Tracker": "https://github.com/ViktorFu/whisper-transcriber/issues",
+        "Documentation": "https://github.com/ViktorFu/whisper-transcriber/blob/main/README.md",
+        "Source Code": "https://github.com/ViktorFu/whisper-transcriber",
     },
     packages=find_packages(),
     classifiers=[

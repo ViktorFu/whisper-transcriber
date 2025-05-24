@@ -34,7 +34,7 @@ A professional, high-precision audio and video transcription tool powered by Ope
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-username/whisper-transcriber.git
+git clone https://github.com/ViktorFu/whisper-transcriber.git
 cd whisper-transcriber
 ```
 
@@ -237,10 +237,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 🐛 [Issue Tracker](https://github.com/your-username/whisper-transcriber/issues)
-- 💬 [Discussions](https://github.com/your-username/whisper-transcriber/discussions)
-- 📧 [Email Support](mailto:support@example.com)
+- 🐛 [Issue Tracker](https://github.com/ViktorFu/whisper-transcriber/issues)
+- 💬 [Discussions](https://github.com/ViktorFu/whisper-transcriber/discussions)
+- 📧 [Email Support](mailto:fuwk509@gmail.com)
 
 ---
 
-**Made with ❤️ for the audio transcription community** 
+**Made with ❤️ by ViktorFu for the audio transcription community** 
