@@ -368,16 +368,31 @@ class WhisperTranscriber:
         elif srt_path:
             print("⚠️ SRT file not found or keeping disabled")
             
-        # Clean up working directory
+        # Clean up working directory completely
         if os.path.exists(self.base_working_dir):
-            for subdir in ["01_chunks_initial_16khz", "02_chunks_split_by_silence", "03_chunks_vocals_demucs"]:
-                subdir_path = os.path.join(self.base_working_dir, subdir)
-                if os.path.exists(subdir_path):
-                    try:
-                        shutil.rmtree(subdir_path)
-                        cleanup_items.append(f"Removed: {os.path.basename(subdir_path)}")
-                    except Exception as e:
-                        print(f"  - Error removing {os.path.basename(subdir_path)}: {e}")
+            try:
+                # Remove entire working directory and all its contents
+                shutil.rmtree(self.base_working_dir)
+                cleanup_items.append(f"Removed working directory: {os.path.basename(self.base_working_dir)}")
+            except Exception as e:
+                print(f"⚠️ Error removing working directory {self.base_working_dir}: {e}")
+                # Fallback: try to remove subdirectories individually
+                for subdir in ["01_chunks_initial_16khz", "02_chunks_split_by_silence", "03_chunks_vocals_demucs", "output"]:
+                    subdir_path = os.path.join(self.base_working_dir, subdir)
+                    if os.path.exists(subdir_path):
+                        try:
+                            shutil.rmtree(subdir_path)
+                            cleanup_items.append(f"Removed: {os.path.basename(subdir_path)}")
+                        except Exception as e2:
+                            print(f"  - Error removing {os.path.basename(subdir_path)}: {e2}")
+                
+                # Try to remove the now-empty working directory
+                try:
+                    if os.path.exists(self.base_working_dir) and not os.listdir(self.base_working_dir):
+                        os.rmdir(self.base_working_dir)
+                        cleanup_items.append(f"Removed empty working directory: {os.path.basename(self.base_working_dir)}")
+                except Exception as e3:
+                    print(f"  - Could not remove working directory: {e3}")
                         
         # Clean up temporary audio file
         if temp_audio_file and os.path.exists(temp_audio_file):

@@ -278,10 +278,28 @@ def auto_cleanup(working_dir: Optional[str], temp_audio_file: Optional[str] = No
     # Clean up working directory
     if working_dir and os.path.exists(working_dir):
         try:
+            # Remove entire working directory and all its contents
             shutil.rmtree(working_dir)
             cleanup_items.append(f"Working directory: {working_dir}")
         except Exception as e:
             print(f"⚠️ Failed to clean up working directory: {e}")
+            # Try to remove any remaining subdirectories
+            try:
+                for subdir in ["01_chunks_initial_16khz", "02_chunks_split_by_silence", "03_chunks_vocals_demucs", "output"]:
+                    subdir_path = os.path.join(working_dir, subdir)
+                    if os.path.exists(subdir_path):
+                        try:
+                            shutil.rmtree(subdir_path)
+                            cleanup_items.append(f"Subdirectory: {subdir}")
+                        except Exception as e2:
+                            print(f"  - Could not remove {subdir}: {e2}")
+                
+                # Try to remove the now-empty working directory
+                if os.path.exists(working_dir) and not os.listdir(working_dir):
+                    os.rmdir(working_dir)
+                    cleanup_items.append(f"Empty working directory: {working_dir}")
+            except Exception as e3:
+                print(f"  - Additional cleanup failed: {e3}")
     
     # Clean up temporary audio file
     if temp_audio_file and os.path.exists(temp_audio_file):
