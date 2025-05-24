@@ -1,0 +1,23 @@
+# Core dependencies
+torch>=2.1.0
+torchaudio>=2.1.0
+whisper-openai>=20231117
+demucs>=4.0.0
+
+# Audio processing
+pydub>=0.25.1
+soundfile>=0.12.1
+
+# UI and utilities
+tqdm>=4.64.0
+psutil>=5.9.0
+pathlib
+
+# System utilities
+subprocess
+threading
+concurrent.futures
+
+# Optional: for GUI (tkinter is built-in for most Python installations)
+# If using virtual environment without tkinter:
+# python-tk 
