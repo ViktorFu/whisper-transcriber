@@ -9,6 +9,6 @@ __version__ = "1.0.0"
 __author__ = "Whisper Transcriber Team"
 __email__ = "contact@example.com"
 
-from .main import main
+# 移除了 from .main import main 以避免模块执行冲突
 
-__all__ = ["main"] 
+__all__ = [] 

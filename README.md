@@ -69,8 +69,25 @@ main()
 ```
 
 ### Command Line Interface
+
+**Method 1: Traditional way (requires correct directory)**
 ```bash
+cd whisper-transcriber
 python -m src.main
+```
+
+**Method 2: Using the launcher scripts (can run from anywhere)**
+```bash
+# Python launcher script
+python whisper-transcriber/run.py
+
+# Windows batch script
+whisper-transcriber\run.bat
+```
+
+**Method 3: Direct execution**
+```bash
+python whisper-transcriber/src/main.py
 ```
 
 ### Programmatic Usage
